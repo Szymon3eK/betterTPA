@@ -1,0 +1,15 @@
+name: betterTPA
+version: '1.0-SNAPSHOT'
+main: xyz.szymon3ek.bettertpa.BetterTPA
+api-version: '1.20'
+commands:
+  tpa:
+    description: 'Przeleportuj sie do gracza!'
+    usage: '/tpa'
+  tpaccept:
+    description: 'Akceptuj zaproszenie do teleportacji!'
+    usage: '/tpaccept <player>'
+  tpdeny:
+    description: 'Odrzuc zaproszenie do teleportacji!'
+    usage: '/tpdeny <player>'
+

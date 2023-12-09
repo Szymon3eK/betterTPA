@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="betterTPA:jar">
+    <output-path>$PROJECT_DIR$/../../Minecraft/pluginExample/plugins</output-path>
+    <root id="archive" name="betterTPA.jar">
+      <element id="module-output" name="betterTPA" />
+    </root>
+  </artifact>
+</component>
