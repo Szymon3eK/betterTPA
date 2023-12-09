@@ -5,9 +5,12 @@ Najlepszy plugin na serwer SMP do teleportacji!
 brak
 
 # Komendy
-/tpa - otwiera gui
-/tpaccept <nick> - akceptuje zapytanie o teleportacje
-/tpdeny <nick> - odrzuca zapytanie o teleportacje
+
+<ul>
+  <li>/tpa - otwiera gui </li>
+  <li>/tpaccept <nick> - akceptuje zapytanie o teleportacje</li>
+  <li>/tpdeny <nick> - odrzuca zapytanie o teleportacje</li>
+</ul>
 
 # GUI
 
