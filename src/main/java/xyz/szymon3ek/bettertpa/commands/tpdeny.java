@@ -11,6 +11,12 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class tpdeny implements CommandExecutor {
+
+    private boolean check(HashMap<Player, Player> request, Player target, Player player) {
+
+        return request.containsKey(target) && request.get(target) == player;
+
+    }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
@@ -22,29 +28,33 @@ public class tpdeny implements CommandExecutor {
 
         Player p = (Player) sender;
         Player target = Bukkit.getPlayer(args[0]);
-
+        HashMap<Player, Player> request = tpRequest.getRequestMap();
 
         if (sender == target) {
             sender.sendMessage("§7» §cNie mozesz anulowac prosby o teleportacje od siebie samego!");
             p.playSound(p.getLocation(), "minecraft:entity.villager.no", 1, 1);
             return true;
         }
+        else {
+            if (request.containsKey(target)) {
 
-        try {
-            HashMap<Player, Player> request = tpRequest.getRequestMap();
-
-/*            if (request.get(target.getUniqueId())) {
-                sender.sendMessage("§7» §aAnulowales prosbe od §2" + target.getName() + "§a!");
-                request.remove(target.getUniqueId());
-                target.sendMessage("§7» §cGracz §4" + sender.getName() + " §cAnulowal twoja prosbe o teleportacje!");
+                if (check(request, target, p)) {
+                    p.playSound(p.getLocation(), "minecraft:entity.villager.yes", 1, 1);
+                    p.sendMessage("§7» §cOdrzuciles prosbe o teleportacje od §4" + target.getName() + "§c!");
+                    target.sendMessage("§7» §c§4" + p.getName() + " §coldrzucil twoja prosbe o teleportacje!");
+                    request.remove(target, p);
+                    return true;
+                } else {
+                    p.sendMessage("§7» §cNie ma takiej prosby o teleportacje!");
+                    p.playSound(p.getLocation(), "minecraft:entity.villager.no", 1, 1);
+                    return true;
+                }
+            } else {
+                p.sendMessage("§7» §cNie ma takiej prosby o teleportacje!");
+                p.playSound(p.getLocation(), "minecraft:entity.villager.no", 1, 1);
                 return true;
-            }*/
-        } catch (NullPointerException e) {
-            sender.sendMessage("§7» §cGracz §4" + args[0] + " §cnie wyslal do ciebie prosby o teleportacje!");
-            return true;
+            }
         }
-
-        return true;
 
     }
 
